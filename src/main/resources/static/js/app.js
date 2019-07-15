@@ -6,12 +6,12 @@ function setConnected(connected) {
 }
 
 function connect() {
-    var socket = new SockJS('http://localhost:8080/websocket-endpoint');
+    var socket = new SockJS('http://156.17.42.121:8080/websocket-endpoint');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         setConnected(true);
         console.log('Connected: ' + frame);
-        stompClient.send("/app/user", {}, JSON.stringify({'name': 'elo'}));
+        stompClient.send("/app/user", {}, JSON.stringify({'name': 'Welcome'}));
         stompClient.subscribe('/topic/user', function (greeting) {
         });
     });
